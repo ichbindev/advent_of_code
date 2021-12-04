@@ -32,6 +32,30 @@ print('gamma', gammaInt)
 print('epsilon', epsilonInt)
 print('Part 1', gammaInt * epsilonInt)
 
+# Part 2
+
+
+
+oxygenCounts = counts
+co2Counts = counts[:]
+idx = 0
+		
+while len(oxygenCounts) > 1:
+	oneIsBigger = gamma[idx] == '1'
+	if oneIsBigger:
+		oxygenCounts = [x for x in oxygenCounts if x[idx] == '1']
+	else:
+		oxygenCounts = [x for x in oxygenCounts if x[idx] == '0']
+	idx += 1
+idx = 0
+while len(co2Counts) > 1:
+	oneIsBigger = gamma[idx] == '1'
+	if oneIsBigger:
+		co2Counts = [x for x in co2Counts if x[idx] == '0']
+	else:
+		co2Counts = [x for x in co2Counts if x[idx] == '1']
+	idx += 1
+print(int(oxygenCounts[0], 2) * int(co2Counts[0], 2))
 
 file.close()
 
