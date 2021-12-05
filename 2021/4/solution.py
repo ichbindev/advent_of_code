@@ -54,6 +54,7 @@ while i < len(inp):
 	i += 1
 	board = Board(boardInput)
 	boards.append(board)
+
 found = False
 for call in calls:
 	if found: break
@@ -64,6 +65,17 @@ for call in calls:
 			found = True
 			break
 
+# Part 2
+remaining = boards
+for call in calls:
+	unsolved = []
+	for board in remaining:
+		board.mark(call)
+		if not board.is_solved():
+			unsolved.append(board)
+		elif len(remaining) == 1:
+			print('The answer for Part 2 is', board.get_solution(call))
+	remaining = unsolved
 
 
 file.close()
